@@ -78,10 +78,43 @@
     }
   </style>
 </head>
+
+<script>
+  function openZellePage() {
+    const email = "camjhirsh@gmail.com";
+  
+    const newWindow = window.open("", "_blank");
+  
+    newWindow.document.write(`
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <title>Zelle</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+          body {
+            margin: 80px 0 0 0;
+            display: flex;
+            justify-content: center;
+            font-family: monospace;
+            font-size: 22px;
+          }
+        </style>
+      </head>
+      <body>
+        ${email}
+      </body>
+      </html>
+    `);
+  
+    newWindow.document.close();
+  }
+</script>
+  
 <body>
   <a class="link" href="https://gofund.me/d159433a9" target="_blank">GoFundMe</a>
   <a class="link" href="https://venmo.com/u/Cameron-Hirsh" target="_blank">Venmo</a>
-  <a class="link zelle-tooltip" href="#" onclick="return false;">
+  <a class="link zelle-tooltip" href="#" onclick="openZellePage(); return false;">
     Zelle
     <span class="tooltip">camjhirsh@gmail.com</span>
   </a>
