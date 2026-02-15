@@ -82,9 +82,8 @@
 <script>
   function openZellePage() {
     const email = "camjhirsh@gmail.com";
-  
     const newWindow = window.open("", "_blank");
-  
+
     newWindow.document.write(`
       <!DOCTYPE html>
       <html>
@@ -93,20 +92,51 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
           body {
-            margin: 50px 0 0 0;
+            margin: 40px 0 0 0;
             display: flex;
             justify-content: center;
             font-family: monospace;
-            font-size: 18px;
+            font-size: 14px;
+          }
+
+          .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #111;
+            color: #fff;
+            padding: 10px 16px;
+            border-radius: 6px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+          }
+
+          .toast.show {
+            opacity: 1;
           }
         </style>
       </head>
       <body>
         ${email}
+        <div id="toast" class="toast">Copied to clipboard</div>
+
+        <script>
+          const emailText = "${email}";
+          navigator.clipboard.writeText(emailText).then(() => {
+            const toast = document.getElementById("toast");
+            toast.classList.add("show");
+            setTimeout(() => {
+              toast.classList.remove("show");
+            }, 2000);
+          });
+        <\/script>
       </body>
       </html>
     `);
-  
+
     newWindow.document.close();
   }
 </script>
